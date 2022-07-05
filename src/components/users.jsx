@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import api from "../api";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
 const Users = () => {
-  // const [users, setUsers] = useState(api.fetchAll());
+  const [users, setUsers] = useState(api.users.fetchAll());
   // const handleDelete = (userId) => {};
   const renderPhrase = (number) => {
     return (
@@ -13,9 +14,10 @@ const Users = () => {
       </>
     );
   };
+  console.log(users);
   return (
     <>
-      <div>{renderPhrase()}</div>
+      {renderPhrase()}
       <table className="table">
         <thead>
           <tr>
@@ -27,7 +29,22 @@ const Users = () => {
             <th scope="col"></th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+          {users.map((user) => (
+            <>
+              <tr key={user._id}>
+                <th>{user.name}</th>
+                <td>{user.qualities}</td>
+                <td>{user.profession}</td>
+                <td>{user.completedMeetings}</td>
+                <td>{user.rate}</td>
+                <td>
+                  <button>delete</button>
+                </td>
+              </tr>
+            </>
+          ))}
+        </tbody>
       </table>
     </>
   );
