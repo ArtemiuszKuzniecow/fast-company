@@ -31,18 +31,28 @@ const Users = () => {
         </thead>
         <tbody>
           {users.map((user) => (
-            <>
-              <tr key={user._id}>
-                <th>{user.name}</th>
-                <td>{user.qualities}</td>
-                <td>{user.profession}</td>
-                <td>{user.completedMeetings}</td>
-                <td>{user.rate}</td>
-                <td>
-                  <button>delete</button>
-                </td>
-              </tr>
-            </>
+            <tr key={user._id}>
+              <td>{user.name}</td>
+              <td>
+                {Array.isArray(user.qualities)
+                  ? user.qualities.map((quality) => {
+                      return (
+                        <span className={"badge m-1 " + "bg-" + quality.color}>
+                          {quality.name}
+                        </span>
+                      );
+                    })
+                  : user.qualities.name}
+              </td>
+              <td>{user.profession.name}</td>
+              <td>{user.completedMeetings}</td>
+              <td>{user.rate}</td>
+              <td>
+                <button type="button" className="btn btn-danger">
+                  delete
+                </button>
+              </td>
+            </tr>
           ))}
         </tbody>
       </table>
