@@ -4,7 +4,9 @@ import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 const Users = () => {
   const [users, setUsers] = useState(api.users.fetchAll());
-  // const handleDelete = (userId) => {};
+  const handleDelete = (userId) => {
+    console.log("it works");
+  };
   const renderPhrase = (number) => {
     return (
       <>
@@ -14,7 +16,6 @@ const Users = () => {
       </>
     );
   };
-  console.log(users);
   return (
     <>
       {renderPhrase()}
@@ -37,7 +38,10 @@ const Users = () => {
                 {Array.isArray(user.qualities)
                   ? user.qualities.map((quality) => {
                       return (
-                        <span className={"badge m-1 " + "bg-" + quality.color}>
+                        <span
+                          className={"badge m-1 " + "bg-" + quality.color}
+                          key={quality.name}
+                        >
                           {quality.name}
                         </span>
                       );
@@ -48,7 +52,11 @@ const Users = () => {
               <td>{user.completedMeetings}</td>
               <td>{user.rate}</td>
               <td>
-                <button type="button" className="btn btn-danger">
+                <button
+                  type="button"
+                  className="btn btn-danger"
+                  onClick={(e) => console.log(e)}
+                >
                   delete
                 </button>
               </td>
