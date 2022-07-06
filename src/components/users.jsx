@@ -11,7 +11,9 @@ const Users = () => {
     let phrase;
     let bgColor;
     if (
-      Number(number.toString()[number.toString().length - 2]) > 1 ||
+      (Number(number.toString()[number.toString().length - 2]) > 1 &&
+        Number(number.toString()[number.toString().length - 1]) >= 2 &&
+        Number(number.toString()[number.toString().length - 1]) <= 4) ||
       (number.toString().length === 1 &&
         Number(number.toString()[number.toString().length - 1]) >= 2 &&
         Number(number.toString()[number.toString().length - 1]) <= 4)
