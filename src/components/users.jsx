@@ -59,7 +59,7 @@ const Users = () => {
                     ? user.qualities.map((quality) => {
                         return (
                           <span
-                            className={"badge m-1 " + "bg-" + quality.color}
+                            className={"badge m-1 bg-" + quality.color}
                             key={quality.name}
                           >
                             {quality.name}
