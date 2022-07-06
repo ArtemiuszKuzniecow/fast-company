@@ -5,7 +5,7 @@ import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 const Users = () => {
   const [users, setUsers] = useState(api.users.fetchAll());
   const handleDelete = (userId) => {
-    setUsers(users.filter((user) => user !== userId));
+    setUsers((prevState) => prevState.filter((user) => user !== userId));
   };
   const renderPhrase = (number) => {
     let phrase;
@@ -28,11 +28,9 @@ const Users = () => {
       bgColor = "bg-primary";
     }
     return (
-      <>
-        <h2>
-          <span className={"badge m-2 " + bgColor}>{phrase}</span>
-        </h2>
-      </>
+      <h2>
+        <span className={"badge m-2 " + bgColor}>{phrase}</span>
+      </h2>
     );
   };
   return (
