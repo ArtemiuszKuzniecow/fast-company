@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import User from "./user";
 import api from "../../api";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../../../node_modules/bootstrap-icons/bootstrap-icons.svg";
 
 const Users = ({ users, ...rest }) => {
   return (
@@ -11,10 +12,7 @@ const Users = ({ users, ...rest }) => {
         <table className="table">
           <thead>
             <tr>
-              <th scope="col">
-                {/* Имя */}
-                <i className="bi bi-bookmark"></i>
-              </th>
+              <th scope="col">Имя</th>
               <th scope="col">Качества</th>
               <th scope="col">Профессия</th>
               <th scope="col">Встретился, раз</th>
