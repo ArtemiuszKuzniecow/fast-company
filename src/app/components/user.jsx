@@ -2,7 +2,7 @@ import React from "react";
 import Qualitie from "./qualitie";
 import BookMark from "./bookmark";
 
-const User = ({ users, rest }) => {
+const User = ({ users, onDelete }) => {
   return users.map((user) => (
     <tr key={user._id}>
       <td>{user.name}</td>
@@ -19,7 +19,7 @@ const User = ({ users, rest }) => {
         <button
           type="button"
           className="btn btn-danger"
-          // onClick={}
+          onClick={() => onDelete(user)}
         >
           delete
         </button>
