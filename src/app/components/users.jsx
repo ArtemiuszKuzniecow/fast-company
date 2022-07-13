@@ -1,13 +1,10 @@
-import React, { useState } from "react";
-import User from "./user";
-import api from "../../api";
+import "bootstrap-icons/font/bootstrap-icons.css";
+import React from "react";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import "../../../node_modules/bootstrap-icons/bootstrap-icons.svg";
-
+import User from "./user";
 const Users = ({ users, ...rest }) => {
   return (
     <>
-      {/* {renderPhrase(users.length)} */}
       {users.length > 0 ? (
         <table className="table">
           <thead>
@@ -17,10 +14,13 @@ const Users = ({ users, ...rest }) => {
               <th scope="col">Профессия</th>
               <th scope="col">Встретился, раз</th>
               <th scope="col">Оценка</th>
+              <th scope="col">Избранное</th>
               <th scope="col"></th>
             </tr>
           </thead>
-          <tbody></tbody>
+          <tbody>
+            <User users={users} />
+          </tbody>
         </table>
       ) : null}
     </>
