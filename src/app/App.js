@@ -7,13 +7,32 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 
 function App() {
   const [users, setUsers] = useState(api.users.fetchAll());
+
+  const handleFavourites = (userFavourite) => {
+    setUsers((prevState) =>
+      prevState.map((user) => {
+        if (user === userFavourite) {
+          if (user.bookmark === true) {
+            user.bookmark = false;
+          } else {
+            user.bookmark = true;
+          }
+        }
+        return user;
+      })
+    );
+  };
   const handleDelete = (userId) => {
     setUsers((prevState) => prevState.filter((user) => user !== userId));
   };
   return (
     <>
       <SearchStatus length={users.length} />
-      <Users users={users} onDelete={handleDelete} />
+      <Users
+        users={users}
+        onDelete={handleDelete}
+        onFavourite={handleFavourites}
+      />
     </>
   );
 }

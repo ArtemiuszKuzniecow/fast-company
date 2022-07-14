@@ -2,7 +2,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import React from "react";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import User from "./user";
-const Users = ({ users, onDelete }) => {
+const Users = ({ users, onDelete, onFavourite }) => {
   return (
     <>
       {users.length > 0 ? (
@@ -19,7 +19,7 @@ const Users = ({ users, onDelete }) => {
             </tr>
           </thead>
           <tbody>
-            <User users={users} onDelete={onDelete} />
+            <User users={users} onDelete={onDelete} onFavourite={onFavourite} />
           </tbody>
         </table>
       ) : null}
