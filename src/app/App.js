@@ -12,6 +12,7 @@ function App() {
     setUsers((prevState) =>
       prevState.map((user) => {
         if (user === userFavourite) {
+          console.log(user);
           if (user.bookmark === true) {
             user.bookmark = false;
           } else {
