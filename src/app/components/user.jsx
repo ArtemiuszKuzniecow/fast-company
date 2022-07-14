@@ -1,6 +1,6 @@
 import React from "react";
-import Qualitie from "./qualitie";
 import BookMark from "./bookmark";
+import Qualitie from "./qualitie";
 
 const User = ({ users, onDelete, onFavourite }) => {
   return users.map((user) => (
@@ -13,7 +13,7 @@ const User = ({ users, onDelete, onFavourite }) => {
       <td>{user.completedMeetings}</td>
       <td>{user.rate}/5</td>
       <td>
-        <button onClick={() => onFavourite(user)}>
+        <button onClick={() => onFavourite(user._id)}>
           <BookMark status={user.bookmark} />
         </button>
       </td>

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import api from "../api";
-import Users from "./components/users";
-import SearchStatus from "./components/searchStatus";
-import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import React, { useState } from "react";
+import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import api from "../api";
+import SearchStatus from "./components/searchStatus";
+import Users from "./components/users";
 
 function App() {
   const [users, setUsers] = useState(api.users.fetchAll());
@@ -11,12 +11,11 @@ function App() {
   const handleFavourites = (userFavourite) => {
     setUsers((prevState) =>
       prevState.map((user) => {
-        if (user === userFavourite) {
-          console.log(user);
+        if (user._id === userFavourite) {
           if (user.bookmark === true) {
-            user.bookmark = false;
+            return { ...user, bookmark: false };
           } else {
-            user.bookmark = true;
+            return { ...user, bookmark: true };
           }
         }
         return user;
