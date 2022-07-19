@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const SearchStatus = ({ length }) => {
   let phrase;
@@ -18,6 +19,10 @@ const SearchStatus = ({ length }) => {
       <span className={"badge m-2 " + bgColor}>{phrase}</span>
     </h2>
   );
+};
+
+SearchStatus.propTypes = {
+  length: PropTypes.number.isRequired
 };
 
 export default SearchStatus;
