@@ -1,12 +1,16 @@
-import "bootstrap-icons/font/bootstrap-icons.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import "../../node_modules/bootstrap-icons/font/bootstrap-icons.css";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import api from "../api";
-import SearchStatus from "./components/searchStatus";
 import Users from "./components/users";
 
 function App() {
-  const [users, setUsers] = useState(api.users.fetchAll());
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    api.users.default.fetchAll().then((data) => {
+      setUsers(data);
+    });
+  }, []);
 
   const handleFavourites = (userFavourite) => {
     setUsers((prevState) =>
@@ -22,18 +26,19 @@ function App() {
       })
     );
   };
+
   const handleDelete = (userId) => {
     setUsers((prevState) => prevState.filter((user) => user !== userId));
   };
+
   return (
-    <>
-      <SearchStatus length={users.length} />
+    users[0] && (
       <Users
         users={users}
         onDelete={handleDelete}
         onFavourite={handleFavourites}
       />
-    </>
+    )
   );
 }
 
