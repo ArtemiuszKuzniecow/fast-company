@@ -6,9 +6,12 @@ import Users from "./components/users";
 
 function App() {
   const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     api.users.default.fetchAll().then((data) => {
       setUsers(data);
+      setLoading(true);
     });
   }, []);
 
@@ -32,7 +35,7 @@ function App() {
   };
 
   return (
-    users[0] && (
+    loading && (
       <Users
         users={users}
         onDelete={handleDelete}
